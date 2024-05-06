@@ -1,13 +1,13 @@
 <h1 align="center">Expected Value Of Climate Activism</h1>
-<h2 align="center">Author: Thiago Amin and Ruth Ruth Atagbuzia (Supervisor: Daniel Saunders)</h2>
+<h2 align="center">Authors: Thiago Amin and Ruth Ruth Atagbuzia (Daniel Saunders, Supervisor)</h2>
 <h2 align="center">Subject: Behavioural Economics</h2>
 
-## Abstract
+## 1: Abstract
 Behavioral scientists have been interested in explaining why it is rational to participate in collective action for some time. One previous approach is the collective interest model. Research on the collective interest model has had two characteristic flaws. First, it has adopted analytical strategies that yield counterintuitive predictions. The collective interest model predicts individuals are most likely to participate in collective action when the probability of the group succeeding without them is high. The trouble with this prediction is that if the group can succeed without them, they have little incentive to participate. Second, only a small set of measurement tools have been explored. These measurements create uncertainty around the right way to estimate people's utilities and probabilities derived from participating in climate change activism. This project is interested in developing a revised mathematical version of the collective interest model that leads to more intuitive predictions while exploring new measurements such as generalized social trust and free market value. Although this project is theoretical in nature, we will propose a set of statistical tests that could assess the accuracy of the model. The statistical model will be designed to be tested on hypothetical survey data. Simulated data demonstrates our statistical model can reliably recover individuals’ probabilities and utilities.
 ![Screenshot 2024-05-04 at 9 34 50 PM](https://github.com/thiagoamin/EVClimateActiv/assets/122248078/73b0ffae-9749-4058-9dda-57f632f6518a)
 
 
-## Comparing Theoretical Models (by Thiago)
+## 2: Theoretical Comparison (Lubell vs Us)
 
 Attempting to create a theoretical model that predicts the expected value of participation in climate activism, Lubell developed a collective interest model. His multivariable model contains the following parameters: two probability variables which represent the group’s probability of success ($p_g$) and an agent’s marginal contribution to this probability of success ($p_i$); selective costs ($C$) and benefits ($B$) to the individual; and the value of the collective public good $V$. The relationship between these variables is described in the following equation:
 
@@ -71,5 +71,155 @@ The maximum value obtained would seem to be rational. Let's say for example that
 
 Another interesting feature of our new model is that it states that $\frac{\partial EV}{\partial p_i} = 1 - p_g$, while Lubell argues that $\frac{\partial EV}{\partial p_i} = p_g$. To put it another way, our model states that the rate of change of EV with respect to $p_i$ decreases as the base group probability of success ($p_g$) increases. The explanation behind this prediction again lies within the free rider problem. As the probability of group success ($p_g$) increases, the free-rider issue starts affecting the model. This means that an increase in $p_i$ when $p_g$ is high (free-riding) will lead to a smaller increase in EV than it would have otherwise led to if no free-riding had occurred.
 
+## 3: Measurement (Survey Questions)
+The following survey questions were designed using Likert scales.
+### 3.1: Expected Value of Participation (EV(activism))
 
+- **Outcome Measure Options**:
+  - Use a Likert scale to ask about utilities directly.
+  - Ask whether respondents take specific actions related to climate change (e.g., participating in protests, membership in activist groups), then use logistic regression to predict the probability of participation.
+
+### 3.2: Individual Influence (Ia or Pi)
+
+- **Question**: "I believe my actions have an influence on global warming and climate change."
+  - Scale: 1 (Strongly Disagree) to 5 (Strongly Agree)
+
+### 3.3: Probability of Group Success (Pg)
+
+- **Question 1**: "I am confident that other people are helping to reduce the effects of global warming/climate change."
+  - Scale: 1 (Strongly Disagree) to 5 (Strongly Agree)
+- **Question 2**: "I believe taking action towards combating global warming/climate change encourages others in my community to take similar steps that increase our energy independence."
+  - Scale: 1 (Strongly Disagree) to 5 (Strongly Agree)
+- **Question 3**: "I believe that public officials are important in influencing the outcomes of global warming/climate change."
+  - Scale: 1 (Strongly Disagree) to 5 (Strongly Agree)
+
+### 3.4 Benefits to the Individual (Bi)
+
+- **Question 1**: "I believe today’s policies must consider the needs of future generations."
+  - Scale: 1 (Strongly Disagree) to 5 (Strongly Agree)
+- **Question 2**: "Have you talked to friends and family members about global warming/climate change?"
+  - Type: True/False
+
+### 3.5 Benefits Dependent on Success (Bd)
+
+- **Question**: "If global warming is happening, to what extent do you believe that it is caused by human activities, as opposed to natural changes in the environment?"
+  - Scale: 1 (Strongly Agree) to 5 (Strongly Disagree)
+
+### 3.6 Costs to the Individual (Ci)
+
+- **Question 1**: "What is the highest level of education you have completed?"
+  - Type: Ordered scale
+- **Question 2**: "What is the estimated annual income for your household?"
+  - Type: Real number line
+- **Question 3**: "The major cause of increased atmospheric concentration of greenhouse gases is human burning of fossil fuels."
+  - Type: True/False
+
+### 3.7 Costs Dependent on Regulation (Cd)
+
+- **Question 1**: "I believe markets should generally be free from government interference and unregulated."
+  - Scale: 1 (Strongly Disagree) to 5 (Strongly Agree)
+- **Question 2**: "I believe the carbon tax is significantly harmful to the economy."
+  - Scale: 1 (Strongly Disagree) to 5 (Strongly Agree)
+
+## 4: Theoretical Model -> Regression Model
+
+### 4.1: Linking Measurements with Theoretical Variables
+In each case, we need the appropriate function to convert the units in which a variable is measured to the units in the theoretical model. For instance, \(Pi\) is a probability, ranging from 0 to 1. However, the variable is measured using a Likert scale, which ranges from 1 to 5. To convert this, we consider \(x\) as the Likert score.
+
+#### Probability of Individual Contribution (Pi)
+First, we start with a linear regression:
+$$Pi = a + bx$$
+This linear equation is then transformed into a probability scale using the logistic function, which measures the proportion of the maximum value that the linear regression has traveled across:
+$$Pi = \frac{exp(a + bx)}{1 + exp(a + bx)}$$
+When the linear regression value is large, the ratio approaches one, and when it is small, the probability approaches zero.
+
+<div align="center">
+    <img src="https://github.com/thiagoamin/EV-Climate-Activism/assets/122248078/91f310db-a7e6-491f-84ed-e8d011c9b3b1" width="50%" height="auto">
+    <br>
+    <b>Figure 3: Relationship between theoretical P_i variable and measured Likert variable</b>
+    <br><br>
+</div>
+
+#### Probability of Group Success (Pg)
+We also have variables that are measured by multiple questions - $p_g$. Therefore, we need a multi-variate regression design.
+$$P_g = \frac{exp(a + b_1x_1 + b_2x_2 + b_3x_3)}{1 + exp(a + b_1x_1 + b_2x_2 + b_3x_3)}$$
+Each of $(x_1, x_2, x_3)$ are measured using Likert scales.
+
+#### Benefits and Costs
+Benefits (Bi) and costs (Ci) in our model are quantified using linear combinations of measured variables. Benefits are defined as $(Bi = a + b_1 \cdot x_1 + b_2 \cdot x_2)$, where $(x_1)$ and $(x_2)$ represent specific Likert scale responses and binary indicators, respectively. Costs are explicitly modeled to incorporate the cumulative impact of various factors such as education level or economic perspectives, defined as $(Ci = a + b_1 \cdot x_1 + b_2 \cdot x_2 + b_3 \cdot x_3$)$.
+
+### 4.2 Complete Regression Model
+The complete regression model integrates these variables to estimate the expected value of activism. This model directly connects our actual collected data with our theoretical variables:
+$$ev(activism) = \frac{exp(a1 + b1 \cdot x1)}{1 + exp(a1 + b1 \cdot x1)} \cdot (1 - \frac{exp(a2 + b2 \cdot x2 + b3 \cdot x3 + b4 \cdot x4)}{1 + exp(a2 + b2 \cdot x2 + b3 \cdot x3 + b4 \cdot x4)}) \cdot ((a3 + b5 \cdot x5) - (a4 + b6 \cdot x6 + b7 \cdot x7)) + (a5 + b8 \cdot x8 + b9 \cdot x9) - (a6 + b10 \cdot x10 + b11 \cdot x11 + b12 \cdot x12)$$
+
+## 5: Data Simulation and Model Testing
+This section outlines the process for evaluating two theoretical models of climate activism—the original Lubell model and our proposed revision—using simulated data. We use Bayesian statistical methods to estimate model parameters and employ Bayes factors to discern which model better captures the dynamics of climate activism.
+
+### 5.1: Simulating Data
+We simulate individual data points based on predefined distributions to create realistic datasets for each model structure.
+```python
+import numpy as np
+import pandas as pd
+import scipy.stats as stats
+
+def simulate_person():
+    pi = stats.uniform().rvs()  # Individual contribution probability
+    pg = stats.uniform().rvs()  # Group success probability
+    bd = stats.norm(500, 200).rvs()  # Benefits dependent on success
+    cd = stats.norm(100, 30).rvs()   # Costs dependent on success
+    bi = stats.norm(10, 5).rvs()     # Individual benefits
+    ci = stats.norm(50, 20).rvs()    # Individual costs
+
+    ev = pi * pg * (bd - cd) + bi - ci  # Expected value calculation
+    return [ev, pi, pg, bd, cd, bi, ci]
+
+# Generate data for 500 simulated individuals
+t = [simulate_person() for _ in range(500)]
+data = pd.DataFrame(t, columns=['ev', 'pi', 'pg', 'bd', 'cd', 'bi', 'ci'])
+```
+
+### 5.2: Model Fitting and Comparison
+We fit both theoretical models to the simulated data. The basic idea is to determine model fit using Bayes factors: if the underlying simulation aligns with the Lubell model, it should exhibit a higher Bayes factor compared to our model. Conversely, if our revised model better represents the simulated data, the Lubell model should show a lower Bayes factor.
+
+```python
+# Define and fit Lubell's model
+with pm.Model() as m0:
+    α = pm.Normal('α', 0, 0.5, shape=4)
+    β = pm.Normal('β', 0, 0.5, shape=6)
+    ϵ = pm.Exponential('ϵ', 1)
+
+    pi = pm.Deterministic('pi', np.exp(α[0] + β[0] * data['pi']) / (1 + np.exp(α[0] + β[0] * data['pi'])))
+    pg = pm.Deterministic('pg', np.exp(α[1] + β[1] * data['pg']) / (1 + np.exp(α[1] + β[1] * data['pg'])))
+    bd_cd = α[2] + β[2] * data['bd'] + β[3] * data['cd']
+    bi_ci = α[3] + β[4] * data['bi'] + β[5] * data['ci']
+
+    μ = pm.Deterministic('μ', pi * pg * bd_cd + bi_ci)
+    y_pred = pm.Normal('ev', μ, ϵ, observed=data['ev'])
+
+    trace_m0 = pm.sample(1000)
+
+# Define and fit our revised model
+import pymc3 as pm
+import arviz as az
+
+with pm.Model() as m1:
+    α = pm.Normal('α', 0, 0.5, shape=4)
+    β = pm.Normal('β', 0, 0.5, shape=6)
+    ϵ = pm.Exponential('ϵ', 1)
+
+    pi = pm.Deterministic('pi', np.exp(α[0] + β[0] * data['pi']) / (1 + np.exp(α[0] + β[0] * data['pi'])))
+    pg = pm.Deterministic('pg', np.exp(α[1] + β[1] * data['pg']) / (1 + np.exp(α[1] + β[1] * data['pg'])))
+    bd_cd = α[2] + β[2] * data['bd'] + β[3] * data['cd']
+    bi_ci = α[3] + β[4] * data['bi'] + β[5] * data['ci']
+
+    μ = pm.Deterministic('μ', pi * (1 - pg) * bd_cd + bi_ci)
+    y_pred = pm.Normal('ev', μ, ϵ, observed=data['ev'])
+
+    trace_m1 = pm.sample(1000)
+
+# Compute and compare Bayes factors
+comparison = az.compare({'Lubell Model': trace_m0, 'Our Model': trace_m1}, ic='waic')
+print(comparison)
+```
+This integrated approach helps us test theoretical predictions and refine our understanding of participation dynamics in climate activism. By comparing Bayes factors, we can empirically determine which model more accurately reflects the mechanisms driving individual participation in collective action.
 
