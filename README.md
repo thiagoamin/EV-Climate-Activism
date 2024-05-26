@@ -2,20 +2,49 @@
 <h2 align="center">Authors: Thiago Amin and Ruth Ruth Atagbuzia (Daniel Saunders, Supervisor)</h2>
 <h2 align="center">Subject: Behavioural Economics</h2>
 
-## 1: Abstract
-Behavioral scientists have been interested in explaining why it is rational to participate in collective action for some time. One previous approach is the collective interest model. Research on the collective interest model has had two characteristic flaws. First, it has adopted analytical strategies that yield counterintuitive predictions. The collective interest model predicts individuals are most likely to participate in collective action when the probability of the group succeeding without them is high. The trouble with this prediction is that if the group can succeed without them, they have little incentive to participate. Second, only a small set of measurement tools have been explored. These measurements create uncertainty around the right way to estimate people's utilities and probabilities derived from participating in climate change activism. This project is interested in developing a revised mathematical version of the collective interest model that leads to more intuitive predictions while exploring new measurements such as generalized social trust and free market value. Although this project is theoretical in nature, we will propose a set of statistical tests that could assess the accuracy of the model. The statistical model will be designed to be tested on hypothetical survey data. Simulated data demonstrates our statistical model can reliably recover individuals’ probabilities and utilities.
+## 1: Summary
+
+Behavioral scientists have long sought to explain the rationality behind participation in collective action. The collective interest model is one approach to this issue, but it suffers from two primary flaws. First, its analytical strategies often lead to counterintuitive predictions, such as the notion that individuals are most likely to participate when the group’s success without them is high, which undermines the incentive for participation. Second, the model relies on a limited set of measurement tools, leading to uncertainties in estimating the utilities and probabilities associated with climate change activism. This project aims to develop a revised mathematical version of the collective interest model that provides more intuitive predictions and incorporates new measurements, such as generalized social trust and free market value. Although theoretical, we propose a set of statistical tests to evaluate the model's accuracy, using simulated survey data. 
+
+**Figure:** Multidisciplinary Undergraduate Research Conference (MURC) Poster
 ![Screenshot 2024-05-04 at 9 34 50 PM](https://github.com/thiagoamin/EVClimateActiv/assets/122248078/73b0ffae-9749-4058-9dda-57f632f6518a)
 
+## 2: Introduction
+Climate change represents one of the most significant global challenges, necessitating collective action to mitigate its impact. Understanding the factors that motivate individuals to participate in climate activism is crucial for designing effective policies and interventions. This study explores a theoretical model that predicts the expected value of individual participation in climate activism, initially examined by Mark Lubell. The model incorporates several key parameters to estimate the likelihood of participation based on individual and collective incentives.
 
-## 2: Theoretical Comparison (Lubell vs Us)
+Lubell's collective interest model is defined by the following equation (Lubell, 2007):
 
-Attempting to create a theoretical model that predicts the expected value of participation in climate activism, Lubell developed a collective interest model. His multivariable model contains the following parameters: two probability variables which represent the group’s probability of success ($p_g$) and an agent’s marginal contribution to this probability of success ($p_i$); selective costs ($C$) and benefits ($B$) to the individual; and the value of the collective public good $V$. The relationship between these variables is described in the following equation:
+$$
+EV(Global Warming Activism) = (p_g \cdot p_i) \cdot V - C + B
+$$
+
+where:
+- $p_g$ denotes the group’s probability of success,
+- $p_i$ represents an individual’s marginal contribution to this probability of success,
+- $V$ is the value of the collective public good,
+- $C$ refers to the selective costs to the individual,
+- $B$ indicates the selective benefits to the individual.
+
+However, several significant issues arise within this model. Firstly, it does not adequately differentiate between success-dependent and success-independent benefits and costs, potentially leading to inaccurate estimations of the overall expected value. Secondly, the definition of the collective public good \( V \) is ambiguous, affecting the model's output based on whether \( V \) is interpreted at an individual or global level. Thirdly, the model’s assumption that agents may act altruistically conflicts with the rational choice theory, which assumes agents act to maximize personal utility.
+
+To address these limitations, we propose an alternative model. In our revised model, the $V$ variable is substituted with two other parameters $B_d$ and $C_d$, and the term $p_g$ is substituted with $1 - p_g$ (see "3: Theorical Comparison"). This new formulation aims to provide a more accurate representation of the dynamics driving individual participation in climate activism.
+
+To compare the effectiveness of these models, we propose using survey data to measure various parameters. The survey questions are designed to capture the expected value of participation, individual influence, probability of group success, benefits, and costs associated with climate activism. These measurements can then be used to estimate the theoretical variables and evaluate the models.
+
+For this comparison, we suggest employing Bayesian statistical methods. By fitting both theoretical models to the survey data and using Bayesian methods, we can estimate the model parameters and employ Bayes factors to determine which model better captures the dynamics of climate activism. This approach allows for a rigorous comparison based on empirical data, enhancing our understanding of the factors influencing individual participation in collective action.
+
+In the following sections, we will detail the theoretical comparison between the two models, propose survey questions to gather the necessary data, and outline the Bayesian approach for model evaluation. This comprehensive examination aims to refine our understanding of the factors influencing climate activism and contribute to the development of more effective strategies for promoting collective action.
+
+
+## 3: Theoretical Comparison 
+
+Attempting to test a theoretical model that predicts the expected value of participation in climate activism, Lubell evaluated a collective interest model. His multivariable model contains the following parameters: two probability variables which represent the group’s probability of success ($p_g$) and an agent’s marginal contribution to this probability of success ($p_i$); selective costs ($C$) and benefits ($B$) to the individual; and the value of the collective public good $V$. The relationship between these variables is described in the following equation:
 
 <div align="center"><b>M<sub>0</sub> = EV(Global Warming Activism) = [(p<sub>g</sub> × p<sub>i</sub>) × V] - C + B]</sub></b></div>
 
 However, we propose the following alternative model, where the $V$ variable was substituted by two other parameters ($B_a$ and $C_d$), and the term $p_g$ was substituted for $(1-p_g)$:
 
-<div align="center"><b>M<sub>1</sub> = EV(Global Warming Activism) = [p<sub>i</sub>(1 - p<sub>g</sub>)(B<sub>d</sub> - C<sub>d</sub>)] - C]<sub>i</sub> + B<sub>i</sub></b></div>
+<div align="center"><b>M<sub>1</sub> = EV(Global Warming Activism) = [p<sub>i</sub>(1 - p<sub>g</sub>)(B<sub>d</sub> - C<sub>d</sub>)] - C<sub>i</sub> + B<sub>i</sub></b></div>
 
 The key difference between the two models can be established graphically. To do that, the additive parameters of the models ($-C + B$ for $M_0$ and $-C_i +B_i$ for $M_1$) were set to zero. Then, $V$ and ($B_d - C_d$) were both set to 1 in $M_0$ and $M_1$ respectively. Therefore, the following graphs exemplify the relationship exclusively between the probability parameters ($p_g$ and $p_i$) and the expected value of participation (EV):
 
@@ -223,3 +252,11 @@ print(comparison)
 ```
 This integrated approach helps us test theoretical predictions and refine our understanding of participation dynamics in climate activism. By comparing Bayes factors, we can empirically determine which model more accurately reflects the mechanisms driving individual participation in collective action.
 
+## 5: Conclusion
+In this project, we explored a theoretical model predicting the expected value of individual participation in climate activism, initially explored by Lubell. While Lubell's model integrates key parameters such as the group's probability of success, individual contribution, and collective public good, it falls short in differentiating between success-dependent and success-independent factors, and it makes counterintuitive predictions regarding rational behavior. To address these issues, we proposed a revised model that substitutes ambiguous variables with more precise ones and incorporates the concept of the free-rider problem. We suggest using survey data to measure the relevant parameters and employing Bayesian statistical methods to compare the models rigorously. This comprehensive approach aims to refine our understanding of the factors driving climate activism and enhance the predictive power and practical application of these theoretical models.
+
+## 5: References
+1. Lubell, M., Zahran, S., & Vedlitz, A. (2007). Collective Action and Citizen Responses to Global Warming. Political Behavior, 29(3), 391–413. https://doi.org/10.1007/s11109-006-9025-2
+2. Olson, M. (1965). Logic of Collective Action: Public Goods and the Theory of Groups (Harvard economic studies. v. 124). Harvard University Press.
+3. Ostrom, E. (1998). A Behavioral Approach to the Rational Choice Theory of Collective Action: Presidential Address, American Political Science Association, 1997. American Political Science Review, 92(01), 1–22. https://doi.org/10.2307/2585925
+4. Oliver, P. E. (1993). Formal Models of Collective Action. Annual Review of Sociology, 19, 271–300. http://www.jstor.org/stable/2083389
