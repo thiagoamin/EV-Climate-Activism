@@ -10,12 +10,12 @@ Behavioral economists have long sought to explain the rationality behind partici
 ![Screenshot 2024-05-04 at 9 34 50 PM](https://github.com/thiagoamin/EVClimateActiv/assets/122248078/73b0ffae-9749-4058-9dda-57f632f6518a)
 
 ## 2: Introduction
-Climate change represents one of the most significant global challenges, necessitating collective action to mitigate its impact. Understanding the factors that motivate individuals to participate in climate activism is crucial for designing effective policies and interventions. This study explores a theoretical model that predicts the expected value of individual participation in climate activism, initially examined by Mark Lubell. The model incorporates several key parameters to estimate the likelihood of participation based on individual and collective incentives.
+Climate change represents one of the most significant global challenges, necessitating collective action to mitigate its impact. Understanding the factors that motivate individuals to participate in climate activism is crucial for designing effective policies and interventions. The collective interest model has been employed to predict the expected value (EV) of individual participation in climate activism, based on the interplay between individual contributions and the probability of group success (as cited in Lubell, 2007).
 
-Lubell's collective interest model is defined by the following equation (Lubell, 2007):
+The model is defined as:
 
 $$
-EV(Global Warming Activism) = (p_g \cdot p_i) \cdot V - C + B
+EV_0 = (p_g \cdot p_i) \cdot V - C + B
 $$
 
 where:
@@ -25,7 +25,7 @@ where:
 - $C$ refers to the selective costs to the individual,
 - $B$ indicates the selective benefits to the individual.
 
-However, several significant issues arise within this model. Firstly, it does not adequately differentiate between success-dependent and success-independent benefits and costs, potentially leading to inaccurate estimations of the overall expected value. Secondly, the definition of the collective public good \( V \) is ambiguous, affecting the model's output based on whether \( V \) is interpreted at an individual or global level. Thirdly, the model’s assumption that agents may act altruistically conflicts with the rational choice theory, which assumes agents act to maximize personal utility.
+However, several significant issues arise within this model. Firstly, it does not adequately differentiate between success-dependent and success-independent benefits and costs, potentially leading to inaccurate estimations of the overall expected value. Secondly, the definition of the collective public good \( V \) is ambiguous, affecting the model's output based on whether \( V \) is interpreted at an individual or global level. Thirdly, the model often predicts higher individual participation when the group's likelihood of success (without the individual’s input) is high, a counterintuitive outcome that overlooks free-riding.
 
 To address these limitations, we propose an alternative model. In our revised model, the $V$ variable is substituted with two other parameters $B_d$ and $C_d$, and the term $p_g$ is substituted with $1 - p_g$ (see "3: Theorical Comparison"). This new formulation aims to provide a more accurate representation of the dynamics driving individual participation in climate activism.
 
@@ -38,27 +38,25 @@ In the following sections, we will detail the theoretical comparison between the
 
 ## 3: Theoretical Comparison 
 
-Attempting to test a theoretical model that predicts the expected value of participation in climate activism, Lubell evaluated a collective interest model. His multivariable model contains the following parameters: two probability variables which represent the group’s probability of success ($p_g$) and an agent’s marginal contribution to this probability of success ($p_i$); selective costs ($C$) and benefits ($B$) to the individual; and the value of the collective public good $V$. The relationship between these variables is described in the following equation:
+Attempting to test a theoretical model that predicts the expected value of participation in climate activism, Lubell evaluated the collective interest model (see above). However, we propose the following alternative model, where the $V$ variable was substituted by two other parameters ($B_a$ and $C_d$), and the term $p_g$ was substituted for $(1-p_g)$:
 
-<div align="center"><b>M<sub>0</sub> = EV(Global Warming Activism) = [(p<sub>g</sub> × p<sub>i</sub>) × V] - C + B]</sub></b></div>
+$$
+EV_1 = (p_i)(1-p_g)\cdot(B_d - C_d) + B_i - C_i
+$$
 
-However, we propose the following alternative model, where the $V$ variable was substituted by two other parameters ($B_a$ and $C_d$), and the term $p_g$ was substituted for $(1-p_g)$:
-
-<div align="center"><b>M<sub>1</sub> = EV(Global Warming Activism) = [p<sub>i</sub>(1 - p<sub>g</sub>)(B<sub>d</sub> - C<sub>d</sub>)] - C<sub>i</sub> + B<sub>i</sub></b></div>
-
-The key difference between the two models can be established graphically. To do that, the additive parameters of the models ($-C + B$ for $M_0$ and $-C_i +B_i$ for $M_1$) were set to zero. Then, $V$ and ($B_d - C_d$) were both set to 1 in $M_0$ and $M_1$ respectively. Therefore, the following graphs exemplify the relationship exclusively between the probability parameters ($p_g$ and $p_i$) and the expected value of participation (EV):
+The key difference between the two models can be established graphically. To do that, the additive parameters of the models ($-C + B$ for $EV_0$ and $-C_i +B_i$ for $EV_1$) were set to zero. Then, $V$ and ($B_d - C_d$) were both set to 1 in $EV_0$ and $EV_1$ respectively. Therefore, the following graphs exemplify the relationship exclusively between the probability parameters ($p_g$ and $p_i$) and the expected value of participation (EV):
 
 <div align="center">
     <img src="https://github.com/thiagoamin/EVClimateActiv/assets/122248078/8929226f-05de-4caa-92d6-b87124ce6c79" alt="Graphical Comparison between the Models (front)">
     <br>
-    <b>Figure 1: Graphical Comparison between models M0 and M1 (front)</b>
+    <b>Figure 1: Graphical Comparison between models EV_0 and EV_1 (front)</b>
     <br><br>
 </div>
 
 <div align="center">
     <img src="https://github.com/thiagoamin/EVClimateActiv/assets/122248078/b752a6eb-d4a5-4e65-ac29-b332f79eb147" alt="Graphical Comparison between the Models (back)">
     <br>
-    <b>Figure 2: Graphical Comparison between models M0 and M1 (back)</b>
+    <b>Figure 2: Graphical Comparison between models EV_0 and EV_1 (back)</b>
     <br><br>
 </div>
 
@@ -76,11 +74,11 @@ $$
 EV_{p_i} = \frac{\partial EV}{\partial p_i} = 1 - p_g, \quad \text{and} \quad EV_{p_g} = \frac{\partial EV}{\partial p_g} = -p_i
 $$
 
-The partial derivatives of $M_0$ tell us that the rate of change of EV with respect to either probability variable will be the other probability variable (and will always be positive). Meanwhile, for $M_1$, the rate of change of EV with respect to $p_i$ is decreasing as $p_g$ increases (but like the partial derivative for $M_0$, always remains positive). And the rate of change of EV with respect to $p_g$ is always negative (and equal to $-p_i$).
+The partial derivatives of $M_0$ tell us that the rate of change of EV with respect to either probability variable will be the other probability variable (and will always be positive). Meanwhile, for $EV_1$, the rate of change of EV with respect to $p_i$ is decreasing as $p_g$ increases (but like the partial derivative for $EV_0$, always remains positive). And the rate of change of EV with respect to $p_g$ is always negative (and equal to $-p_i$).
 
 The mathematical characteristics lead to important differences between the models. Firstly, Lubell's model predicts that as the value of $p_g$ increases, the rate of change of EV will be positive. In other words, as the group's probability of success (without considering the individual's contribution) increases, the individual's expected value of participation would also increase. This would be counterintuitive since it seems to not account for the free-rider issue, which would predict that participation would be less likely as $p_g$ increases. This is because the agent will still yield the benefits of the group's success even without participating in the movement and experiencing its costs.
 
-Another implausible feature of Lubell's model is that it predicts the maximum EV of participation occurs when both $p_g$ and $p_i$ are equal to one. This raises the question: if the movement is almost certain to succeed ($p_g = 1$), how could an agent believe that his contribution will have a significant impact in the group's probability of success ($p_i = 1$)? Therefore, the coordinate (1, 1), where the maximum occurs for $M_0$, would not occur for rational agents. This leads to the conclusion that $p_g + p_i \leq 1$.
+Another implausible feature of Lubell's model is that it predicts the maximum EV of participation occurs when both $p_g$ and $p_i$ are equal to one. This raises the question: if the movement is almost certain to succeed ($p_g = 1$), how could an agent believe that his contribution will have a significant impact in the group's probability of success ($p_i = 1$)? Therefore, the coordinate (1, 1), where the maximum occurs for $EV_0$, would not occur for rational agents. This leads to the conclusion that $p_g + p_i \leq 1$.
 
 One might say that if we optimize (find the maximum) Lubell's function under the constraint $p_g + p_i \leq 1$, then we will obtain the value that Lubell intended to be its model's maximum. However, when doing that, we find that the maximum occurs at (0.5, 0.5):
 
@@ -90,13 +88,13 @@ $$
 
 In other words, according to Lubell, an agent is the most likely to join a movement when its marginal contribution to the group's success is 50% and the group's base probability of success is 50%. But why would that be the case? I would argue that a rational agent is more likely to contribute where his $p_i$ is 80% and $p_g$ is 20%, since his personal contribution would be more felt and the group's total probability of success depends considerably on what he could do and on an optimistic scenario of (0.5, 0.5).
 
-The problems presented highlight the need for the development of a model that correct these counterintuitive predictions. The model developed in this paper (M_d) addresses these issues and develops a new model that accounts for them. Firstly, our model calculates that as the value of $p_g$ increases, $\frac{\partial EV}{\partial p_g} \leq 0$. In other words, as the group's probability of success (without considering the individual's contribution) increases, the individual's expected value of participation would decrease. This would account for the free-rider issue. Furthermore, in this new developed model, the maximum value of EV occurs at (1, 0):
+The problems presented highlight the need for the development of a model that correct these counterintuitive predictions. The model developed in this paper $EV_1$ addresses these issues and develops a new model that accounts for them. Firstly, our model calculates that as the value of $p_g$ increases, $\frac{\partial EV}{\partial p_g} \leq 0$. In other words, as the group's probability of success (without considering the individual's contribution) increases, the individual's expected value of participation would decrease. This would account for the free-rider issue. Furthermore, in this new developed model, the maximum value of EV occurs at (1, 0):
 
 $$
 \max\{EV(p_g,p_i) \mid p_i \geq 0 \wedge p_g \geq 0 \wedge (p_i + p_g \leq 1)\} = 1 \text{ at } (1, 0)
 $$
 
-The maximum value obtained would seem to be rational. Let's say for example that a group has no chance of succeeding without a given agent ($p_g = 0$). However, let us assume that if this certain agent joins the movement, then it has a guaranteed chance of success ($p_i = 100\%$). It would only be rational for this to represent the maximum value of EV, since free riding would not occur, but the total chances of success (considering agent's participation) are 100% (success and yielding of benefits is guaranteed).
+The maximum value obtained would seem to be rational. Let's say for example that a group has no chance of succeeding without a given agent ($p_g = 0$). However, let us assume that if this certain agent joins the movement, then it has a guaranteed chance of success $(p_i = 100\%)$. It would only be rational for this to represent the maximum value of EV, since free riding would not occur, but the total chances of success (considering agent's participation) are 100% (success and yielding of benefits is guaranteed).
 
 Another interesting feature of our new model is that it states that $\frac{\partial EV}{\partial p_i} = 1 - p_g$, while Lubell argues that $\frac{\partial EV}{\partial p_i} = p_g$. To put it another way, our model states that the rate of change of EV with respect to $p_i$ decreases as the base group probability of success ($p_g$) increases. The explanation behind this prediction again lies within the free rider problem. As the probability of group success ($p_g$) increases, the free-rider issue starts affecting the model. This means that an increase in $p_i$ when $p_g$ is high (free-riding) will lead to a smaller increase in EV than it would have otherwise led to if no free-riding had occurred.
 
@@ -176,10 +174,6 @@ Each of $(x_1, x_2, x_3)$ are measured using Likert scales.
 
 #### Benefits and Costs
 Benefits (Bi) and costs (Ci) in our model are quantified using linear combinations of measured variables. Benefits are defined as $(Bi = a + b_1 \cdot x_1 + b_2 \cdot x_2)$, where $(x_1)$ and $(x_2)$ represent specific Likert scale responses and binary indicators, respectively. Costs are explicitly modeled to incorporate the cumulative impact of various factors such as education level or economic perspectives, defined as $(Ci = a + b_1 \cdot x_1 + b_2 \cdot x_2 + b_3 \cdot x_3$)$.
-
-### 4.2 Complete Regression Model
-The complete regression model integrates these variables to estimate the expected value of activism. This model directly connects our actual collected data with our theoretical variables:
-$$ev(activism) = \frac{exp(a1 + b1 \cdot x1)}{1 + exp(a1 + b1 \cdot x1)} \cdot (1 - \frac{exp(a2 + b2 \cdot x2 + b3 \cdot x3 + b4 \cdot x4)}{1 + exp(a2 + b2 \cdot x2 + b3 \cdot x3 + b4 \cdot x4)}) \cdot ((a3 + b5 \cdot x5) - (a4 + b6 \cdot x6 + b7 \cdot x7)) + (a5 + b8 \cdot x8 + b9 \cdot x9) - (a6 + b10 \cdot x10 + b11 \cdot x11 + b12 \cdot x12)$$
 
 ## 5: Data Simulation and Model Testing
 This section outlines the process for evaluating two theoretical models of climate activism—the original Lubell model and our proposed revision—using simulated data. We use Bayesian statistical methods to estimate model parameters and employ Bayes factors to discern which model better captures the dynamics of climate activism.
